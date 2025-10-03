@@ -167,4 +167,4 @@ While more complex than a one Pi per printer setup, this architecture is **more 
 
 ## Author
 
-Developed by **Jason Menard Vasallo** for the Ocean Builders AI Engineer Evaluation.
+Developed by **Jason Menard Vasallo** for the Ocean Builders AI Software Engineer Evaluation.
