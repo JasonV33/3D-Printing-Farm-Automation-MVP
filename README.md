@@ -9,7 +9,7 @@ and provides a Streamlit dashboard for operators.
 ## Features
 
 - **AI-Powered Failure Detection**
-  - MobileNetV2 model fine-tuned on COCO-style 3D print images (`good` vs `bad`).
+  - MobileNetV2 model fine-tuned on 3D print images (`good` vs `bad`).
   - Real-time inference on simulated camera feed.
   - Configurable threshold (default: 0.35) for triggering failure.
 
@@ -124,25 +124,25 @@ The file `training/config_training.yaml` controls:
 
 ## Outputs
 
-- **Confusion Matrix**
-  ![Confusion Matrix](outputs/confusion_matrix.png)
+**Confusion Matrix**
+![Confusion Matrix](outputs/confusion_matrix.png)
 
-- **ROC Curve**
-  ![ROC Curve](outputs/roc_curve.png)
+**ROC Curve**
+![ROC Curve](outputs/roc_curve.png)
 
-- **Precision-Recall Curve**
-  ![PR Curve](outputs/precision_recall_curve.png)
+**Precision-Recall Curve**
+![PR Curve](outputs/precision_recall_curve.png)
 
 ---
 
 ## Local, Offline Implementation (Bonus Discussion)
 
 In a production environment, running this system entirely online would introduce unnecessary risks and costs.  
-To make it more resilient and scalable, a **local, VLAN-aware network architecture** can be used where all printers, ESP32CAM modules, the Raspberry Pi controller, and the database operate within the same local network — independent of a constant internet connection.
+To make it more resilient and scalable, a **local network architecture** can be used where all printers, ESP32CAM modules, the Raspberry Pi controller, and the database operate within the same local network independent of a constant internet connection.
 
 ![Local Implementation Architecture](local_implementation.png)
 
-Instead of placing a **Raspberry Pi on every printer**, which would be expensive and hard to maintain, this architecture uses one or more central Raspberry Pis connected to the **network router**. The ESP32CAM modules on each printer connect to the router over Wi-Fi, sending video snapshots and status updates through **TCP/IP or MQTT over TCP**.
+Instead of placing a **Raspberry Pi on every printer**, which would be expensive and hard to maintain, this architecture uses one central Raspberry Pis connected to the **network router**. The ESP32CAM modules on each printer connect to the router over Wi-Fi, sending video snapshots and status updates through **TCP/IP or MQTT over TCP**.
 
 The router provides:
 - **DHCP**: assigning IP addresses to all devices  
@@ -152,13 +152,13 @@ The router provides:
 The Raspberry Pi, placed in its own VLAN, runs the AI inference engine, manages printer indicators for operators, stores event logs, and periodically pushes data into the local database. A dedicated local server stores long-term data for analytics, and operator laptops connect through separate access points with controlled access.
 
 ### Benefits
-- **Cost-effective** → avoids needing 60+ Raspberry Pis (one per printer)  
-- **Scalable** → the router/AP can support many printers as the farm grows  
-- **Secure** → VLANs isolate IoT devices from servers and admin clients  
-- **Future-proof** → integrates into wider LAN or corporate networks for traceability  
-- **Supportable** → easier to update and maintain a few central devices than dozens of distributed ones  
+- **Cost-effective** -> avoids needing 60+ Raspberry Pis (one per printer)  
+- **Scalable** -> the router/AP can support many printers as the farm grows  
+- **Secure** -> VLANs isolate IoT devices from servers and admin clients  
+- **Future-proof** -> integrates into wider LAN or corporate networks for traceability  
+- **Support** -> easier to update and maintain a few central devices than dozens of distributed ones  
 
-While more complex than a “one Pi per printer” setup, this architecture is ultimately **more scalable, secure, and cost-effective for the long run**.
+While more complex than a one Pi per printer setup, this architecture is **more scalable, secure, and cost-effective for the long run**.
 
 ---
 
