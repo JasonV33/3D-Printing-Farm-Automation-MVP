@@ -9,7 +9,7 @@ and provides a Streamlit dashboard for operators.
 ## Features
 
 - **AI-Powered Failure Detection**
-  - MobileNetV2 model fine-tuned on 3D print images (`good` vs `bad`).
+  - MobileNetV2 model fine-tuned on 3D print images (42 `good` vs 42 `bad`).
   - Real-time inference on simulated camera feed.
   - Configurable threshold (default: 0.35) for triggering failure.
 
