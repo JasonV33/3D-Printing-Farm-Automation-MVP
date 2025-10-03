@@ -235,8 +235,8 @@ def _recompute_time_fields(row: Dict) -> None:
     total_sec = ceil(est_g / PRINT_RATE_G_PER_S)
     row["estimated_min_time"] = round(total_sec / 60.0, 1)
 
-
-def _tick_printing_row(row: Dict) -> None:      # Edge case: if estimated_grams <= 0, fail immediately (invalid job config).
+# Edge case: if estimated_grams <= 0, fail immediately (invalid job config).
+def _tick_printing_row(row: Dict) -> None:
     """
     Advance a printer job by one simulation tick (1s).
     - Updates progress% and spool usage.

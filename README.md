@@ -135,6 +135,33 @@ The file `training/config_training.yaml` controls:
 
 ---
 
+## Local, Offline Implementation (Bonus Discussion)
+
+In a production environment, running this system entirely online would introduce unnecessary risks and costs.  
+To make it more resilient and scalable, a **local, VLAN-aware network architecture** can be used where all printers, ESP32CAM modules, the Raspberry Pi controller, and the database operate within the same local network — independent of a constant internet connection.
+
+![Local Implementation Architecture](local_implementation.png)
+
+Instead of placing a **Raspberry Pi on every printer**, which would be expensive and hard to maintain, this architecture uses one or more central Raspberry Pis connected to the **network router**. The ESP32CAM modules on each printer connect to the router over Wi-Fi, sending video snapshots and status updates through **TCP/IP or MQTT over TCP**.
+
+The router provides:
+- **DHCP**: assigning IP addresses to all devices  
+- **VLAN segmentation**: separating IoT devices, servers, and admin clients into secure zones  
+- **Inter-VLAN routing rules**: controlling which devices can access the database or dashboard  
+
+The Raspberry Pi, placed in its own VLAN, runs the AI inference engine, manages printer indicators for operators, stores event logs, and periodically pushes data into the local database. A dedicated local server stores long-term data for analytics, and operator laptops connect through separate access points with controlled access.
+
+### Benefits
+- **Cost-effective** → avoids needing 60+ Raspberry Pis (one per printer)  
+- **Scalable** → the router/AP can support many printers as the farm grows  
+- **Secure** → VLANs isolate IoT devices from servers and admin clients  
+- **Future-proof** → integrates into wider LAN or corporate networks for traceability  
+- **Supportable** → easier to update and maintain a few central devices than dozens of distributed ones  
+
+While more complex than a “one Pi per printer” setup, this architecture is ultimately **more scalable, secure, and cost-effective for the long run**.
+
+---
+
 ## Author
 
 Developed by **Jason Menard Vasallo** for the Ocean Builders AI Engineer Evaluation.
