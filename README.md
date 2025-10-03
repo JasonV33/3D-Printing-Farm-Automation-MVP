@@ -6,6 +6,29 @@ and provides a Streamlit dashboard for operators.
 
 ---
 
+## System Architecture
+
+The diagram below illustrates the overall system architecture of the 3D Printing Farm Automation MVP:
+
+- **Camera Feed**: Provides printer snapshots used for monitoring.
+- **AI-Powered Failure Detection (MobileNetV2)**: Processes snapshots to detect print failures in real-time.
+- **Printers Live Data (CSV)**: Tracks ongoing printer jobs, spool levels, and operational metadata such as:
+  - `part_serial_no`, `part_description`, `part_name`, `batch_no`
+  - `estimated_grams`, `operator`, `status`, `printer`
+  - `start_time`, `estimated_end_time`, `progress_percent`
+  - `remaining_material_g`, `spool_id`, `job_id`, `fail_reason`
+- **Event History Data (CSV)**: Logs events with timestamps and optional fields like job ID, spool ID, printer ID, and part serial number.
+- **Real-Time Inventory & Progress Tracking**: Uses CSV data to provide up-to-date monitoring of jobs and spools.
+- **System Integration via Streamlit UI**: Central dashboard to:
+  - Monitor printers
+  - Start jobs
+  - View history
+  - Perform printer actions
+
+![System Architecture](system_architecture.png)
+
+---
+
 ## Features
 
 - **AI-Powered Failure Detection**
@@ -50,30 +73,6 @@ and provides a Streamlit dashboard for operators.
    ```bash
    pip install -r requirements.txt
    ```
-
----
-
-## System Architecture
-
-The diagram below illustrates the overall system architecture of the 3D Printing Farm Automation MVP:
-
-- **Camera Feed**: Provides printer snapshots used for monitoring.
-- **AI-Powered Failure Detection (MobileNetV2)**: Processes snapshots to detect print failures in real-time.
-- **Printers Live Data (CSV)**: Tracks ongoing printer jobs, spool levels, and operational metadata such as:
-  - `part_serial_no`, `part_description`, `part_name`, `batch_no`
-  - `estimated_grams`, `operator`, `status`, `printer`
-  - `start_time`, `estimated_end_time`, `progress_percent`
-  - `remaining_material_g`, `spool_id`, `job_id`, `fail_reason`
-- **Event History Data (CSV)**: Logs events with timestamps and optional fields like job ID, spool ID, printer ID, and part serial number.
-- **Real-Time Inventory & Progress Tracking**: Uses CSV data to provide up-to-date monitoring of jobs and spools.
-- **System Integration via Streamlit UI**: Central dashboard to:
-  - Monitor printers
-  - Start jobs
-  - View history
-  - Perform printer actions
-
-![System Architecture](system_architecture.png)
-
 
 ---
 
