@@ -31,39 +31,6 @@ and provides a Streamlit dashboard for operators.
 
 ---
 
-## Repository Structure
-
-```
-project-root/
-│
-├── interface_ui.py          # Streamlit dashboard
-├── events_history.csv       # Event log (append-only)
-├── printers_live.csv        # Live printer state tracking
-├── requirements.txt         # Python dependencies
-├── README.md                # Project documentation
-├── structure.txt            # Folder tree (this file)
-│
-├── training/
-│   ├── train.py             # Training script
-│   ├── config_training.yaml # Config file for dataset & training
-│   └── ...
-│
-├── inference/
-│   ├── inference_failure_model.py  # Inference logic wrapper
-│   └── ...
-│
-├── outputs/                 # Generated during training
-│   ├── best_model.pth       # Trained weights
-│   ├── confusion_matrix.png # Evaluation plot
-│   ├── roc_curve.png        # ROC curve
-│   ├── precision_recall_curve.png # PR curve
-│   └── summary_metrics.json # Metrics summary
-│
-└── .venv/                   # Virtual environment (ignored in git)
-```
-
----
-
 ## Installation
 
 1. Clone the repository:
