@@ -125,12 +125,15 @@ The file `training/config_training.yaml` controls:
 ## Outputs
 
 **Confusion Matrix**
+
 ![Confusion Matrix](outputs/confusion_matrix.png)
 
 **ROC Curve**
+
 ![ROC Curve](outputs/roc_curve.png)
 
 **Precision-Recall Curve**
+
 ![PR Curve](outputs/precision_recall_curve.png)
 
 ---
