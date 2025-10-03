@@ -122,7 +122,7 @@ The file `training/config_training.yaml` controls:
 
 ---
 
-## Example Outputs
+## Outputs
 
 - **Confusion Matrix**
   ![Confusion Matrix](outputs/confusion_matrix.png)
@@ -135,21 +135,6 @@ The file `training/config_training.yaml` controls:
 
 ---
 
-## Future Improvements
-
-- Run inference locally on **Raspberry Pi** for offline operation.
-- Replace CSV storage with **SQLite** or message queues.
-- Extend AI model to multi-class print failure modes.
-- Connect to real camera feeds instead of simulated images.
-
----
-
-## License
-
-MIT License – free to use and modify.
-
----
-
 ## Author
 
-Developed by **[Your Name]** for the Ocean Builders AI Engineer Evaluation.
+Developed by **Jason Menard Vasallo** for the Ocean Builders AI Engineer Evaluation.
