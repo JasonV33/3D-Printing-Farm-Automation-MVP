@@ -1,0 +1,14 @@
+# Ignore virtual environment
+.venv/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore structure dump
+structure.txt
+
+# Ignore presentation
+Presentation.pptx

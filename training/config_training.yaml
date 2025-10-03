@@ -1,0 +1,46 @@
+# -------------------------
+# Project Configuration
+# -------------------------
+project:
+  name: "3D Print Failure Detection"
+  output_dir: "outputs"   # where models, plots, logs will be saved
+
+# -------------------------
+# Dataset
+# -------------------------
+dataset:
+  images_dir: "data/images"                      # path to image folder
+  coco_json: "data/images/annotations_coco.json" # COCO annotations
+  train_split: 0.7
+  val_split: 0.2
+  test_split: 0.1
+
+# -------------------------
+# Model
+# -------------------------
+model:
+  architecture: "mobilenet_v2"   # options: resnet18, mobilenet_v2
+  pretrained: true               # use ImageNet weights
+  freeze_backbone: false         # fine-tune all layers
+  num_classes: 2                 # good vs bad
+
+# -------------------------
+# Training
+# -------------------------
+training:
+  epochs: 100                    # reasonable with early stopping
+  batch_size: 8
+  learning_rate: 0.0001          # careful with small dataset
+  optimizer: "adam"              # options: adam, sgd
+  criterion: "cross_entropy"
+  seed: 42
+  decision_threshold: 0.35       # probability cutoff for classifying "bad"
+  patience: 5                    # early stopping patience (epochs)
+
+# -------------------------
+# Logging
+# -------------------------
+logging:
+  log_file: "training_log.json"          # epoch-wise logs
+  plot_file: "training_progress.png"     # loss & acc curves
+  verbose: true
