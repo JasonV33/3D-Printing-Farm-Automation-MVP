@@ -156,7 +156,7 @@ While more complex than a one Pi per printer setup, this architecture is **more 
 ---
 
 ### Disclaimer:
-The AI model is only trained with a limited dataset to provide a proof of concept. Deploying the model to other test datasets and other images could provide inaccurate results.
+The AI model in this repository is only trained with a limited dataset to provide a proof of concept. Deploying the model to other test datasets and other images could provide inaccurate results.
 
 ---
 
